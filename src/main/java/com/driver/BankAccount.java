@@ -7,7 +7,6 @@ public class BankAccount {
     private double minBalance;
 
 
-
     public String getName() {
         return name;
     }
@@ -44,23 +43,23 @@ public class BankAccount {
         //Generate account number having given number of 'digits' such that the sum of digits is equal to 'sum'
         //If it is not possible, throw "Account Number can not be generated" exception
         double a = Math.pow(10, digits - 1);
-        double b = Math.pow(10, digits) ;
+        double b = Math.pow(10, digits);
 
         String accountNumber = "";
-        for(int i = (int)a ; i<(int)b ; i++){
-            int sumOfDigits=0;
-            int temp=i;
-            while(temp>0) {
+        for (int i = (int) a; i < (int) b; i++) {
+            int sumOfDigits = 0;
+            int temp = i;
+            while (temp > 0) {
                 sumOfDigits = sumOfDigits + (temp % 10);
                 temp = temp / 10;
             }
-         if(sumOfDigits==sum){
-             accountNumber=Integer.toString(i);
-             return accountNumber;
-         }
+            if (sumOfDigits == sum) {
+                accountNumber = Integer.toString(i);
+                return accountNumber;
+            }
         }
 
-        if(accountNumber.length()!=digits)
+        if (accountNumber.length() != digits)
             throw new Exception("Account Number can not be generated");
         return null;
     }
@@ -71,19 +70,13 @@ public class BankAccount {
 
     }
 
-    public void withdraw(double amount) throws InsufficientBalance, Exception {
+    public void withdraw(double amount) throws  Exception {
         // Remember to throw "Insufficient Balance" exception, if the remaining amount would be less than minimum balance
+        if (this.balance - amount < minBalance) {
+            throw new Exception("Insufficient Balance");
+        }
         this.balance = this.balance - amount;
-        if (this.balance < minBalance) {
-            throw new InsufficientBalance("Insufficient Balance");
-        }
-
 
     }
 
-    class InsufficientBalance extends Exception {
-        InsufficientBalance(String message) {
-            super(message);
-        }
-    }
 }
