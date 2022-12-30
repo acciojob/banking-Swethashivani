@@ -30,8 +30,10 @@ public class SavingsAccount extends BankAccount {
         double simpleInterest = 0;
         simpleInterest = getBalance() * years * rate;
         simpleInterest = simpleInterest / 100;
-        return getBalance() + simpleInterest;
-
+        double balance = getBalance();
+        balance = balance + simpleInterest;
+        super.setBalance(balance);
+        return balance;
     }
 
     public double getRate() {
@@ -57,6 +59,7 @@ public class SavingsAccount extends BankAccount {
         rate = Math.pow(rate, (double) years);
         double balance = this.getBalance();
         balance = balance * rate;
+        super.setBalance(balance);
         return balance;
     }
 

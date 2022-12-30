@@ -24,10 +24,9 @@ public class CurrentAccount extends BankAccount {
         // If it is not possible, throw "Valid License can not be generated" Exception
         boolean isValid = true;
         for (int i = 0; i < tradeLicenseId.length() - 1; i++) {
-            if (tradeLicenseId.charAt(i) != tradeLicenseId.charAt(i + 1)) {
-                continue;
-            } else {
+            if (tradeLicenseId.charAt(i) == tradeLicenseId.charAt(i + 1)) {
                 isValid = false;
+                break;
             }
         }
         if (!isValid) {
