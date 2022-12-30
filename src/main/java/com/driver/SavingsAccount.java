@@ -60,7 +60,7 @@ public class SavingsAccount extends BankAccount {
         //double Amount = 1 + (rate / times);
         //System.out.println(super.getBalance() * (Math.pow(Amount, (double) (times * years))));
         //setBalance(super.getBalance() * (Math.pow(Amount, (times * years))));
-        setBalance(getBalance()*(Math.pow((1+(rate/100)),(times*years)));
+        setBalance(getBalance()*(Math.pow((1+(rate/100)),(times*years))));
         return getBalance()*(Math.pow((1+(rate/100)),(times*years)));
     }
 
